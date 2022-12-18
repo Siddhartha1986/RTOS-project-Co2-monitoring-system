@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;project_greenHouse&apos; to &apos;HACKATHON&apos;" description="Rename resource &apos;project_greenHouse&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/project_greenHouse" name="HACKATHON" stamp="1671360435674" updateReferences="true"/>&#x0A;<refactoring comment="Delete resource &apos;HACKATHON/src/mqtt_demo/MQTT.c&apos;" deleteContents="false" description="Delete resource &apos;HACKATHON/src/mqtt_demo/MQTT.c&apos;" element1="/HACKATHON/src/mqtt_demo/MQTT.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1671390949732"/>
+</session>

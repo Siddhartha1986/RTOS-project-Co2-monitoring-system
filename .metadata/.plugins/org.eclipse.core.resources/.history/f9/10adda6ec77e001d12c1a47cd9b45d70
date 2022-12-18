@@ -1,0 +1,221 @@
+/*
+ ===============================================================================
+ Name        : main.c
+ Author      : $(author)
+ Version     :
+ Copyright   : $(copyright)
+ Description : main definition
+ ===============================================================================
+ */
+
+#if defined (__USE_LPCOPEN)
+#if defined(NO_BOARD_LIB)
+#include "chip.h"
+#else
+#include "board.h"
+#endif
+#endif
+
+#include <cr_section_macros.h>
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+#include "heap_lock_monitor.h"
+#include "retarget_uart.h"
+#include "Modbus/ModbusRegister.h"
+#include "DigitalIoPin.h"
+#include "LiquidCrystal.h"
+#include <string>
+#include <ctype.h>
+#include "eeprom.h"
+#include "board.h"
+
+extern "C" {
+
+void vConfigureTimerForRunTimeStats(void) {
+	Chip_SCT_Init(LPC_SCTSMALL1);
+	LPC_SCTSMALL1->CONFIG = SCT_CONFIG_32BIT_COUNTER;
+	LPC_SCTSMALL1->CTRL_U = SCT_CTRL_PRE_L(255) | SCT_CTRL_CLRCTR_L; // set prescaler to 256 (255 + 1), and start timer
+}
+
+}
+
+std::string co2;
+int co2value = 0, temperaturevalue = 0, humidityvalue = 0;
+
+void read_co2_level(void) {
+	// turn on eeprom
+	Chip_Clock_EnablePeriphClock(SYSCTL_CLOCK_EEPROM);
+    Chip_SYSCTL_PeriphReset(RESET_EEPROM);
+
+	// read the eeprom
+    uint8_t buffer[100];
+    Chip_EEPROM_Read(0x00000100, buffer, 100);
+
+	int i = 0;
+
+	if(buffer[i]=='-'){
+		co2 += buffer[i];
+		i++;
+	}
+
+	while(isdigit(buffer[i])) {
+		co2 += buffer[i];
+		i++;
+	}
+}
+
+void write_co2_level(void) {
+    uint8_t buffer[100];
+	for(int i = 0; i < co2.length(); i++) {
+		buffer[i] = co2[i];
+	}
+
+	buffer[co2.length()] = 'x';
+	Chip_EEPROM_Write(0x00000100, buffer, 100);
+}
+
+void lcd_task(void *pvParameters)
+{
+	// create lcd
+	DigitalIoPin pinrs(0, 29, DigitalIoPin::output);
+	DigitalIoPin pinen(0, 9, DigitalIoPin::output);
+	DigitalIoPin pind4(0, 10, DigitalIoPin::output);
+	DigitalIoPin pind5(0, 16, DigitalIoPin::output);
+	DigitalIoPin pind6(1, 3, DigitalIoPin::output);
+	DigitalIoPin pind7(0, 0, DigitalIoPin::output);
+	LiquidCrystal lcd(&pinrs, &pinen, &pind4, &pind5, &pind6, &pind7);
+	lcd.begin(16, 2);
+
+	DigitalIoPin button(1, 8, DigitalIoPin::pullup,true);
+	DigitalIoPin siga(0, 5, DigitalIoPin::pullup);
+	DigitalIoPin sigb(0, 6, DigitalIoPin::pullup);
+
+	bool set_co2 = false;
+	int co2level = atoi(co2.c_str());
+	int lasta = siga.read();
+	//bool lastb = sigb.read();
+
+
+
+
+	while(true)
+	{
+		std::string co2string = std::to_string(co2value),
+		temperaturestring = std::to_string(temperaturevalue),
+		humiditystring = std::to_string(humidityvalue),
+		co2levelstring = std::to_string(co2level);
+
+		lcd.setCursor(0, 0);
+		lcd.print(co2string + " " + temperaturestring + " " + humiditystring + "            ");
+
+		lcd.setCursor(0, 1);
+		lcd.print("co2level " + co2levelstring + "               ");
+
+
+		  if(set_co2)
+			{
+				int a = siga.read();
+				int b = sigb.read();
+
+				//DEBUGOUT("value of A signal%d",a);
+				//DEBUGOUT("value of B Signal%d",b);
+				vTaskDelay(10);
+
+				if(lasta == 1 && a == 0 && b == 0 )
+				{
+					co2level++;
+					DEBUGSTR("RIGHT\r\n");
+				}
+
+				else if(lasta == 1 && a == 0 && b == 1 )
+				{
+					co2level--;
+					DEBUGSTR("LEFT\r\n");
+				}
+
+				lasta = a;
+			}
+
+
+
+		if(button.read()) {
+			DEBUGSTR("Click\r\n");
+			vTaskDelay(400);
+			if(set_co2) {
+				co2 = std::to_string(co2level);
+				write_co2_level();
+				set_co2 = false;
+			} else {
+				set_co2 = true;
+			  }
+		}
+
+		vTaskDelay(60);
+	}
+}
+
+void sensor_task(void *pvParameters) {
+	ModbusMaster humiditytemperature(241);
+	humiditytemperature.begin(9600);
+	ModbusRegister humidity(&humiditytemperature, 256, true);
+	ModbusRegister temperature(&humiditytemperature, 257, true);
+
+	ModbusMaster co2sensor(240);
+	co2sensor.begin(9600);
+
+	ModbusRegister co2val(&co2sensor, 257, true);
+
+	ModbusRegister co2status(&co2sensor, 0x800, true);
+	ModbusRegister humiditytemperaturestatus(&humiditytemperature, 0x200, true);
+
+	while(true){
+
+
+	if(humiditytemperaturestatus.read()) {
+		vTaskDelay(10);
+		temperaturevalue = temperature.read() / 10;
+		vTaskDelay(10);
+		humidityvalue = humidity.read() / 10;
+	}
+
+	vTaskDelay(10);
+	if(co2status.read() == 0) {
+			vTaskDelay(10);
+			co2value = co2val.read() * 10;
+		}
+
+
+	vTaskDelay(500);
+	}
+}
+
+int main(void) {
+
+#if defined (__USE_LPCOPEN)
+	// Read clock settings and update SystemCoreClock variable
+	SystemCoreClockUpdate();
+#if !defined(NO_BOARD_LIB)
+	// Set up and initialize all required blocks and
+	// functions related to the board hardware
+	Board_Init();
+	// Set the LED to the state of "On"
+	Board_LED_Set(0, true);
+#endif
+#endif
+	heap_monitor_setup();
+
+	read_co2_level();
+
+	xTaskCreate(sensor_task, "sensor_task",
+	configMINIMAL_STACK_SIZE * 8, NULL, (tskIDLE_PRIORITY + 1UL), (TaskHandle_t*) NULL);
+
+	xTaskCreate(lcd_task, "lcd_task",
+	configMINIMAL_STACK_SIZE * 8, NULL, (tskIDLE_PRIORITY + 1UL), (TaskHandle_t*) NULL);
+
+	vTaskStartScheduler();
+
+	/* Should never arrive here */
+	return 1;
+}

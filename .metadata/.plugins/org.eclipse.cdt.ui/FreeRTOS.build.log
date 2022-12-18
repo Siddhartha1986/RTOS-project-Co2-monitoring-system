@@ -1,0 +1,20 @@
+21:47:30 **** Incremental Build of configuration Debug for project FreeRTOS ****
+make -r -j12 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "libFreeRTOS.a" ; # arm-none-eabi-objdump -h -S "libFreeRTOS.a" >"libFreeRTOS.lss"
+   text	   data	    bss	    dec	    hex	filename
+     82	      0	      0	     82	     52	heap_3.o (ex libFreeRTOS.a)
+    598	      4	      0	    602	    25a	port.o (ex libFreeRTOS.a)
+    128	      0	      0	    128	     80	FreeRTOSCommonHooks.o (ex libFreeRTOS.a)
+      0	      0	      0	      0	      0	croutine.o (ex libFreeRTOS.a)
+   1152	      0	      0	   1152	    480	event_groups.o (ex libFreeRTOS.a)
+    350	      0	      0	    350	    15e	list.o (ex libFreeRTOS.a)
+   3872	      0	     80	   3952	    f70	queue.o (ex libFreeRTOS.a)
+   2224	      0	      0	   2224	    8b0	stream_buffer.o (ex libFreeRTOS.a)
+   8824	      0	    328	   9152	   23c0	tasks.o (ex libFreeRTOS.a)
+   1687	      0	     60	   1747	    6d3	timers.o (ex libFreeRTOS.a)
+ 
+
+21:47:30 Build Finished. 0 errors, 0 warnings. (took 315ms)
+

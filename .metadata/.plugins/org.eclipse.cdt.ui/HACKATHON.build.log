@@ -1,0 +1,200 @@
+21:47:35 **** Incremental Build of configuration Debug for project HACKATHON ****
+make -r -j12 all 
+Building file: ../src/networking/esp8266_socket.c
+Building file: ../src/networking/serial_port.cpp
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/networking/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/networking/esp8266_socket.d" -MT"src/networking/esp8266_socket.o" -MT"src/networking/esp8266_socket.d" -o "src/networking/esp8266_socket.o" "../src/networking/esp8266_socket.c"
+Invoking: MCU C++ Compiler
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/networking/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/networking/serial_port.d" -MT"src/networking/serial_port.o" -MT"src/networking/serial_port.d" -o "src/networking/serial_port.o" "../src/networking/serial_port.cpp"
+Building file: ../src/mqtt_demo/PlaintextMQTTExample.c
+Building file: ../src/mqtt_demo/using_plaintext.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/mqtt_demo/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/mqtt_demo/PlaintextMQTTExample.d" -MT"src/mqtt_demo/PlaintextMQTTExample.o" -MT"src/mqtt_demo/PlaintextMQTTExample.d" -o "src/mqtt_demo/PlaintextMQTTExample.o" "../src/mqtt_demo/PlaintextMQTTExample.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/mqtt_demo/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/mqtt_demo/using_plaintext.d" -MT"src/mqtt_demo/using_plaintext.o" -MT"src/mqtt_demo/using_plaintext.d" -o "src/mqtt_demo/using_plaintext.o" "../src/mqtt_demo/using_plaintext.c"
+Building file: ../src/modbus/ModbusMaster.cpp
+Building file: ../src/modbus/ModbusRegister.cpp
+Invoking: MCU C++ Compiler
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/modbus/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/modbus/ModbusMaster.d" -MT"src/modbus/ModbusMaster.o" -MT"src/modbus/ModbusMaster.d" -o "src/modbus/ModbusMaster.o" "../src/modbus/ModbusMaster.cpp"
+Invoking: MCU C++ Compiler
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/modbus/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/modbus/ModbusRegister.d" -MT"src/modbus/ModbusRegister.o" -MT"src/modbus/ModbusRegister.d" -o "src/modbus/ModbusRegister.o" "../src/modbus/ModbusRegister.cpp"
+Finished building: ../src/networking/esp8266_socket.c
+../src/mqtt_demo/PlaintextMQTTExample.c: In function 'prvMQTTDemoTask':
+../src/mqtt_demo/PlaintextMQTTExample.c:397:32: warning: variable 'xNetworkStatus' set but not used [-Wunused-but-set-variable]
+  397 |     PlaintextTransportStatus_t xNetworkStatus;
+      |                                ^~~~~~~~~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c:396:18: warning: variable 'xMQTTStatus' set but not used [-Wunused-but-set-variable]
+  396 |     MQTTStatus_t xMQTTStatus;
+      |                  ^~~~~~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c:392:20: warning: unused variable 'ulMaxPublishCount' [-Wunused-variable]
+  392 |     const uint32_t ulMaxPublishCount = 5UL;
+      |                    ^~~~~~~~~~~~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c:391:35: warning: unused variable 'ulTopicCount' [-Wunused-variable]
+  391 |     uint32_t ulPublishCount = 0U, ulTopicCount = 0U;
+      |                                   ^~~~~~~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c:391:14: warning: unused variable 'ulPublishCount' [-Wunused-variable]
+  391 |     uint32_t ulPublishCount = 0U, ulTopicCount = 0U;
+      |              ^~~~~~~~~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c: In function 'prvConnectToServerWithBackoffRetries':
+../src/mqtt_demo/PlaintextMQTTExample.c:494:85: warning: implicit declaration of function 'uxRand' [-Wimplicit-function-declaration]
+  494 |             xBackoffAlgStatus = BackoffAlgorithm_GetNextBackoff( &xReconnectParams, uxRand(), &usNextRetryBackOff );
+      |                                                                                     ^~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c: In function 'prvCreateMQTTConnectionWithBroker':
+../src/mqtt_demo/PlaintextMQTTExample.c:516:18: warning: variable 'xResult' set but not used [-Wunused-but-set-variable]
+  516 |     MQTTStatus_t xResult;
+      |                  ^~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c: In function 'prvUpdateSubAckStatus':
+../src/mqtt_demo/PlaintextMQTTExample.c:568:18: warning: variable 'xResult' set but not used [-Wunused-but-set-variable]
+  568 |     MQTTStatus_t xResult = MQTTSuccess;
+      |                  ^~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c: In function 'prvMQTTSubscribeWithBackoffRetries':
+../src/mqtt_demo/PlaintextMQTTExample.c:639:19: warning: implicit declaration of function 'MQTT_ProcessLoop' [-Wimplicit-function-declaration]
+  639 |         xResult = MQTT_ProcessLoop( pxMQTTContext, mqttexamplePROCESS_LOOP_TIMEOUT_MS );
+      |                   ^~~~~~~~~~~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c:588:18: warning: variable 'xResult' set but not used [-Wunused-but-set-variable]
+  588 |     MQTTStatus_t xResult = MQTTSuccess;
+      |                  ^~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c: In function 'prvMQTTPublishToTopic':
+../src/mqtt_demo/PlaintextMQTTExample.c:686:18: warning: variable 'xResult' set but not used [-Wunused-but-set-variable]
+  686 |     MQTTStatus_t xResult;
+      |                  ^~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c: In function 'prvMQTTUnsubscribeFromTopic':
+../src/mqtt_demo/PlaintextMQTTExample.c:724:18: warning: variable 'xResult' set but not used [-Wunused-but-set-variable]
+  724 |     MQTTStatus_t xResult;
+      |                  ^~~~~~~
+At top level:
+../src/mqtt_demo/PlaintextMQTTExample.c:722:13: warning: 'prvMQTTUnsubscribeFromTopic' defined but not used [-Wunused-function]
+  722 | static void prvMQTTUnsubscribeFromTopic( MQTTContext_t * pxMQTTContext )
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/mqtt_demo/PlaintextMQTTExample.c:586:13: warning: 'prvMQTTSubscribeWithBackoffRetries' defined but not used [-Wunused-function]
+  586 | static void prvMQTTSubscribeWithBackoffRetries( MQTTContext_t * pxMQTTContext )
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+Building file: ../src/modbus/SerialPort.cpp
+Building file: ../src/coreMQTT/source/core_mqtt.c
+Finished building: ../src/networking/serial_port.cpp
+Invoking: MCU C++ Compiler
+Invoking: MCU C Compiler
+Finished building: ../src/mqtt_demo/using_plaintext.c
+ 
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/modbus/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/modbus/SerialPort.d" -MT"src/modbus/SerialPort.o" -MT"src/modbus/SerialPort.d" -o "src/modbus/SerialPort.o" "../src/modbus/SerialPort.cpp"
+Finished building: ../src/mqtt_demo/PlaintextMQTTExample.c
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/coreMQTT/source/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/coreMQTT/source/core_mqtt.d" -MT"src/coreMQTT/source/core_mqtt.o" -MT"src/coreMQTT/source/core_mqtt.d" -o "src/coreMQTT/source/core_mqtt.o" "../src/coreMQTT/source/core_mqtt.c"
+ 
+ 
+Building file: ../src/coreMQTT/source/core_mqtt_serializer.c
+Building file: ../src/coreMQTT/source/core_mqtt_state.c
+Finished building: ../src/modbus/ModbusRegister.cpp
+Invoking: MCU C Compiler
+Finished building: ../src/modbus/ModbusMaster.cpp
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/coreMQTT/source/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/coreMQTT/source/core_mqtt_serializer.d" -MT"src/coreMQTT/source/core_mqtt_serializer.o" -MT"src/coreMQTT/source/core_mqtt_serializer.d" -o "src/coreMQTT/source/core_mqtt_serializer.o" "../src/coreMQTT/source/core_mqtt_serializer.c"
+ 
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/coreMQTT/source/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/coreMQTT/source/core_mqtt_state.d" -MT"src/coreMQTT/source/core_mqtt_state.o" -MT"src/coreMQTT/source/core_mqtt_state.d" -o "src/coreMQTT/source/core_mqtt_state.o" "../src/coreMQTT/source/core_mqtt_state.c"
+ 
+Building file: ../src/backoffAlgorithm/source/backoff_algorithm.c
+Finished building: ../src/modbus/SerialPort.cpp
+Invoking: MCU C Compiler
+Finished building: ../src/coreMQTT/source/core_mqtt.c
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/backoffAlgorithm/source/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/backoffAlgorithm/source/backoff_algorithm.d" -MT"src/backoffAlgorithm/source/backoff_algorithm.o" -MT"src/backoffAlgorithm/source/backoff_algorithm.d" -o "src/backoffAlgorithm/source/backoff_algorithm.o" "../src/backoffAlgorithm/source/backoff_algorithm.c"
+ 
+ 
+Building file: ../src/DigitalIoPin.cpp
+Building file: ../src/Fmutex.cpp
+Invoking: MCU C++ Compiler
+Invoking: MCU C++ Compiler
+Finished building: ../src/coreMQTT/source/core_mqtt_state.c
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/DigitalIoPin.d" -MT"src/DigitalIoPin.o" -MT"src/DigitalIoPin.d" -o "src/DigitalIoPin.o" "../src/DigitalIoPin.cpp"
+Finished building: ../src/coreMQTT/source/core_mqtt_serializer.c
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/Fmutex.d" -MT"src/Fmutex.o" -MT"src/Fmutex.d" -o "src/Fmutex.o" "../src/Fmutex.cpp"
+Finished building: ../src/backoffAlgorithm/source/backoff_algorithm.c
+ 
+ 
+ 
+Building file: ../src/HACKATHON.cpp
+Building file: ../src/ITM_write.c
+Invoking: MCU C++ Compiler
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/HACKATHON.d" -MT"src/HACKATHON.o" -MT"src/HACKATHON.d" -o "src/HACKATHON.o" "../src/HACKATHON.cpp"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/ITM_write.d" -MT"src/ITM_write.o" -MT"src/ITM_write.d" -o "src/ITM_write.o" "../src/ITM_write.c"
+Building file: ../src/LiquidCrystal.cpp
+Building file: ../src/LpcUart.cpp
+Invoking: MCU C++ Compiler
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/LiquidCrystal.d" -MT"src/LiquidCrystal.o" -MT"src/LiquidCrystal.d" -o "src/LiquidCrystal.o" "../src/LiquidCrystal.cpp"
+Invoking: MCU C++ Compiler
+Finished building: ../src/DigitalIoPin.cpp
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/LpcUart.d" -MT"src/LpcUart.o" -MT"src/LpcUart.d" -o "src/LpcUart.o" "../src/LpcUart.cpp"
+Finished building: ../src/Fmutex.cpp
+ 
+ 
+In file included from ../src/./mqtt_demo/demo_config.h:66,
+                 from ../src/./mqtt_demo/MQTT.h:11,
+                 from ../src/HACKATHON.cpp:33:
+../src/./mqtt_demo/logging_stack.h:111:50: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+  111 |         #define LogError( message )    SdkLog( ( "[ERROR] "LOG_METADATA_FORMAT, LOG_METADATA_ARGS ) ); SdkLog( message ); SdkLog( ( "\r\n" ) )
+      |                                                  ^
+../src/./mqtt_demo/logging_stack.h:112:50: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+  112 |         #define LogWarn( message )     SdkLog( ( "[WARN] "LOG_METADATA_FORMAT, LOG_METADATA_ARGS ) ); SdkLog( message ); SdkLog( ( "\r\n" ) )
+      |                                                  ^
+../src/./mqtt_demo/logging_stack.h:113:50: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+  113 |         #define LogInfo( message )     SdkLog( ( "[INFO] "LOG_METADATA_FORMAT, LOG_METADATA_ARGS ) ); SdkLog( message ); SdkLog( ( "\r\n" ) )
+      |                                                  ^
+Building file: ../src/cr_cpp_config.cpp
+Finished building: ../src/ITM_write.c
+Invoking: MCU C++ Compiler
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/cr_cpp_config.d" -MT"src/cr_cpp_config.o" -MT"src/cr_cpp_config.d" -o "src/cr_cpp_config.o" "../src/cr_cpp_config.cpp"
+ 
+Building file: ../src/cr_startup_lpc15xx.cpp
+Building file: ../src/crp.c
+Invoking: MCU C++ Compiler
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/cr_startup_lpc15xx.d" -MT"src/cr_startup_lpc15xx.o" -MT"src/cr_startup_lpc15xx.d" -o "src/cr_startup_lpc15xx.o" "../src/cr_startup_lpc15xx.cpp"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
+../src/HACKATHON.cpp: In function 'void write_co2_level()':
+../src/HACKATHON.cpp:74:19: warning: comparison of integer expressions of different signedness: 'int' and 'std::__cxx11::basic_string<char>::size_type' {aka 'unsigned int'} [-Wsign-compare]
+   74 |  for(int i = 0; i < co2.length(); i++) {
+      |                 ~~^~~~~~~~~~~~~~
+Building file: ../src/heap_lock_monitor.c
+Building file: ../src/modbusConfig.cpp
+Invoking: MCU C Compiler
+Invoking: MCU C++ Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/heap_lock_monitor.d" -MT"src/heap_lock_monitor.o" -MT"src/heap_lock_monitor.d" -o "src/heap_lock_monitor.o" "../src/heap_lock_monitor.c"
+Finished building: ../src/cr_cpp_config.cpp
+arm-none-eabi-c++ -std=c++11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/modbusConfig.d" -MT"src/modbusConfig.o" -MT"src/modbusConfig.d" -o "src/modbusConfig.o" "../src/modbusConfig.cpp"
+Finished building: ../src/cr_startup_lpc15xx.cpp
+Finished building: ../src/crp.c
+ 
+ 
+ 
+Building file: ../src/sysinit.c
+Finished building: ../src/HACKATHON.cpp
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -std=c11 -DDEBUG -D__CODE_RED -D__NEWLIB__ -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC15XX__ -I"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\inc" -I"C:\FINALversion\lpc_chip_15xx\inc" -I"C:\FINALversion\FreeRTOS\inc" -I"C:\FINALversion\FreeRTOS\src\include" -I"C:\FINALversion\FreeRTOS\src\portable\GCC\ARM_CM3" -I"C:\FINALversion\esp_socket\src" -I"C:\FINALversion\esp_socket\src\uart" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -MMD -MP -MF"src/sysinit.d" -MT"src/sysinit.o" -MT"src/sysinit.d" -o "src/sysinit.o" "../src/sysinit.c"
+ 
+Finished building: ../src/LiquidCrystal.cpp
+ 
+Finished building: ../src/heap_lock_monitor.c
+ 
+Finished building: ../src/modbusConfig.cpp
+ 
+Finished building: ../src/LpcUart.cpp
+ 
+Finished building: ../src/sysinit.c
+ 
+Building target: HACKATHON.axf
+Invoking: MCU C++ Linker
+arm-none-eabi-c++ -nostdlib -L"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\Debug" -L"C:\FINALversion\lpc_chip_15xx\Debug" -L"C:\FINALversion\FreeRTOS\Debug" -Xlinker -Map="HACKATHON.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "HACKATHON_Debug.ld" -o "HACKATHON.axf"  ./src/networking/esp8266_socket.o ./src/networking/serial_port.o  ./src/mqtt_demo/PlaintextMQTTExample.o ./src/mqtt_demo/using_plaintext.o  ./src/modbus/ModbusMaster.o ./src/modbus/ModbusRegister.o ./src/modbus/SerialPort.o  ./src/coreMQTT/source/core_mqtt.o ./src/coreMQTT/source/core_mqtt_serializer.o ./src/coreMQTT/source/core_mqtt_state.o  ./src/backoffAlgorithm/source/backoff_algorithm.o  ./src/DigitalIoPin.o ./src/Fmutex.o ./src/HACKATHON.o ./src/ITM_write.o ./src/LiquidCrystal.o ./src/LpcUart.o ./src/cr_cpp_config.o ./src/cr_startup_lpc15xx.o ./src/crp.o ./src/heap_lock_monitor.o ./src/modbusConfig.o ./src/sysinit.o   -llpc_board_nxp_lpcxpresso_1549 -llpc_chip_15xx -lFreeRTOS
+Memory region         Used Size  Region Size  %age Used
+       MFlash256:      100900 B       256 KB     38.49%
+      Ram0_16_32:        3988 B        32 KB     12.17%
+          Ram2_4:          0 GB         4 KB      0.00%
+Finished building target: HACKATHON.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "HACKATHON.axf"; # arm-none-eabi-objcopy -v -O binary "HACKATHON.axf" "HACKATHON.bin" ; # checksum -p LPC1549 -d "HACKATHON.bin";
+   text	   data	    bss	    dec	    hex	filename
+  98380	   2520	   1468	 102368	  18fe0	HACKATHON.axf
+ 
+
+21:47:38 Build Finished. 0 errors, 18 warnings. (took 2s.697ms)
+
