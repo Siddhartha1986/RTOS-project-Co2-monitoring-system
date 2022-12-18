@@ -155,7 +155,7 @@ void lcd_task(void *pvParameters)
 			vTaskDelay(400);
 			if(set_co2) {
 				co2 = std::to_string(co2level);
-				write_co2_level();
+				write_co2_level();   // writing the value to EEPROM
 				set_co2 = false;
 			} else {
 				set_co2 = true;
@@ -190,6 +190,7 @@ void sensor_task(void *pvParameters) {
 		vTaskDelay(10);
 		humidityvalue = humidity.read() / 10;
 	}
+
 
 	vTaskDelay(10);
 	if(co2status.read() == 0) {
