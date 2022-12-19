@@ -43,7 +43,7 @@
 
 /* Logging configuration for the Demo. */
 #ifndef LIBRARY_LOG_NAME
-    #define LIBRARY_LOG_NAME    "MQTTdemogroup5"
+    #define LIBRARY_LOG_NAME    "MQTTDemo"
 #endif
 
 #ifndef LIBRARY_LOG_LEVEL
@@ -79,7 +79,7 @@ extern void vLoggingPrintf( const char * pcFormatString,
  *
  * #define democonfigCLIENT_IDENTIFIER				"insert here."
  */
-#define democonfigCLIENT_IDENTIFIER				"channels/1955513/publish"
+#define democonfigCLIENT_IDENTIFIER				"DCAmDzgFFhoKKy8kCBw3NQA"
 
 /**
  * @brief MQTT broker end point to connect to.
@@ -90,7 +90,7 @@ extern void vLoggingPrintf( const char * pcFormatString,
  * #define democonfigMQTT_BROKER_ENDPOINT				"insert here."
  */
 //#define democonfigMQTT_BROKER_ENDPOINT					"mqtt3.thingspeak.com"
-#define democonfigMQTT_BROKER_ENDPOINT					"192.168.1.254"
+#define democonfigMQTT_BROKER_ENDPOINT					"mqtt3.thingspeak.com"
 
 #define CHANNEL_ID "1955513"
 #define SECRET_MQTT_USERNAME "DCAmDzgFFhoKKy8kCBw3NQA"
@@ -113,8 +113,8 @@ extern void vLoggingPrintf( const char * pcFormatString,
 
 
 #if 1
-#define WIFI_SSID	    "Redmi Note 10 5G"
-#define WIFI_PASS       "123Buddha"
+#define WIFI_SSID	    "SmartIotMQTT"
+#define WIFI_PASS       "SmartIot"
 #endif
 
 #endif /* DEMO_CONFIG_H */

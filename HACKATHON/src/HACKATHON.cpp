@@ -48,11 +48,11 @@ int co2level = 0;
 int co2value = 0, temperaturevalue = 0, humidityvalue = 0, Valvevalue=0;
 
 void read_co2_level(void) {
-	// turn on eeprom
+	// turn on EEPROM
 	Chip_Clock_EnablePeriphClock(SYSCTL_CLOCK_EEPROM);
     Chip_SYSCTL_PeriphReset(RESET_EEPROM);
 
-	// read the eeprom
+	// read the EEPROM
     uint8_t buffer[100];
     Chip_EEPROM_Read(0x00000100, buffer, 100);
 
@@ -115,10 +115,10 @@ void lcd_task(void *pvParameters)
 
 
 		lcd.setCursor(0, 0);
-		lcd.print("C="+co2string + " " +"t=" + temperaturestring + " " +"rh="+ humiditystring + "v="+Valvestring + "            ");
+		lcd.print("C="+co2string + " " +"t=" + temperaturestring + " " +"rh="+ humiditystring + "            ");
 
 		lcd.setCursor(0, 1);
-		lcd.print("co2-setpoint " + co2levelstring + "               ");
+		lcd.print("co2setPT=" + co2levelstring + " " +"V=" + Valvestring + "               ");
 
 
 		  if(set_co2)
@@ -181,6 +181,7 @@ void sensor_task(void *pvParameters) {
 	ModbusRegister humiditytemperaturestatus(&humiditytemperature, 0x200, true);
 
 	DigitalIoPin Valve(0, 27, DigitalIoPin::pullup);
+
 	while(true){
 
 
@@ -198,8 +199,22 @@ void sensor_task(void *pvParameters) {
 			co2value = co2val.read() * 10;
 		}
 
-	Valvevalue=Valve.read();
-	vTaskDelay(500);
+				int offset = 10;
+				if(co2level < (co2value-offset))
+				{
+					Valve.write(false);
+					DEBUGSTR("VALVE IS CLOSED\r\n");
+				}
+
+				else if(co2level > (co2value+offset))
+				{
+					Valve.write(true);
+					DEBUGSTR("VALVE IS OPEN\r\n");
+				}
+
+				Valvevalue=Valve.read();
+				vTaskDelay(500);
+
 	}
 }
 

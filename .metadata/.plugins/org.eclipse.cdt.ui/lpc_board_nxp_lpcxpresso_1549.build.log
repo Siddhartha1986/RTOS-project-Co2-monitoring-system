@@ -1,4 +1,4 @@
-21:47:30 **** Incremental Build of configuration Debug for project lpc_board_nxp_lpcxpresso_1549 ****
+16:31:22 **** Incremental Build of configuration Debug for project lpc_board_nxp_lpcxpresso_1549 ****
 make -r -j12 all 
 make[1]: Nothing to be done for 'main-build'.
 Performing post-build steps
@@ -8,5 +8,5 @@ arm-none-eabi-size "liblpc_board_nxp_lpcxpresso_1549.a" ; # arm-none-eabi-objdum
     574	      0	      0	    574	    23e	board_sysinit.o (ex liblpc_board_nxp_lpcxpresso_1549.a)
  
 
-21:47:31 Build Finished. 0 errors, 0 warnings. (took 315ms)
+16:31:22 Build Finished. 0 errors, 0 warnings. (took 242ms)
 
