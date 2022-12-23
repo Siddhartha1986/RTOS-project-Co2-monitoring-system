@@ -1,10 +1,8 @@
 ../src/mqtt_demo/MQTT_custom.c:40:28:prvConnectToServerWithBackoffRetries	48	static
 ../src/mqtt_demo/MQTT_custom.c:97:6:prvCreateMQTTConnectionWithBroker	72	static
 ../src/mqtt_demo/MQTT_custom.c:155:6:prvUpdateSubAckStatus	32	static
-../src/mqtt_demo/MQTT_custom.c:175:6:prvMQTTSubscribeWithBackoffRetries	64	static
-../src/mqtt_demo/MQTT_custom.c:273:6:prvMQTTPublishToTopic	48	static
-../src/mqtt_demo/MQTT_custom.c:311:6:prvMQTTUnsubscribeFromTopic	32	static
-../src/mqtt_demo/MQTT_custom.c:341:6:prvMQTTProcessResponse	24	static
-../src/mqtt_demo/MQTT_custom.c:393:6:prvMQTTProcessIncomingPublish	32	static
-../src/mqtt_demo/MQTT_custom.c:421:6:prvEventCallback	24	static
-../src/mqtt_demo/MQTT_custom.c:440:10:prvGetTimeMs	16	static
+../src/mqtt_demo/MQTT_custom.c:178:6:prvMQTTPublishToTopic	48	static
+../src/mqtt_demo/MQTT_custom.c:217:6:prvMQTTProcessResponse	24	static
+../src/mqtt_demo/MQTT_custom.c:269:6:prvMQTTProcessIncomingPublish	32	static
+../src/mqtt_demo/MQTT_custom.c:297:6:prvEventCallback	24	static
+../src/mqtt_demo/MQTT_custom.c:316:10:prvGetTimeMs	16	static

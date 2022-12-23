@@ -6,7 +6,7 @@
  * Generated linker script file for LPC1549
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.5.0 [Build 7232] [2022-01-11] on 19 Dec 2022, 16:31:26
+ * MCUXpresso IDE v11.5.0 [Build 7232] [2022-01-11] on 22 Dec 2022, 14:49:52
  */
 
 INCLUDE "HACKATHON_Debug_library.ld"

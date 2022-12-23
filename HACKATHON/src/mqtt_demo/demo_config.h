@@ -76,21 +76,10 @@ extern void vLoggingPrintf( const char * pcFormatString,
  *!!! only.  Production devices can use something unique to the device that can
  *!!! be read by software, such as a production serial number, instead of a
  *!!! hard coded constant.
- *
- * #define democonfigCLIENT_IDENTIFIER				"insert here."
- */
-#define democonfigCLIENT_IDENTIFIER				"DCAmDzgFFhoKKy8kCBw3NQA"
 
-/**
- * @brief MQTT broker end point to connect to.
- *
- * @note If you would like to setup an MQTT broker for running this demo,
- * please see `mqtt_broker_setup.txt`.
- *
- * #define democonfigMQTT_BROKER_ENDPOINT				"insert here."
  */
-//#define democonfigMQTT_BROKER_ENDPOINT					"mqtt3.thingspeak.com"
 #define democonfigMQTT_BROKER_ENDPOINT					"mqtt3.thingspeak.com"
+
 
 #define CHANNEL_ID "1955513"
 #define SECRET_MQTT_USERNAME "DCAmDzgFFhoKKy8kCBw3NQA"
@@ -113,7 +102,7 @@ extern void vLoggingPrintf( const char * pcFormatString,
 
 
 #if 1
-#define WIFI_SSID	    "SmartIotMQTT"
+#define WIFI_SSID	"SmartIotMQTT"
 #define WIFI_PASS       "SmartIot"
 #endif
 

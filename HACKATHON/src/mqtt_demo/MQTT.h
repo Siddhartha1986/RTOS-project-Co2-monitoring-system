@@ -1,4 +1,3 @@
-
 /* Standard includes. */
 #include <string.h>
 #include <stdio.h>
@@ -42,7 +41,7 @@
  * time. This client id can cause collision, if more than one instance of the same
  * binary is used at the same time to connect to the broker.
  */
-#define democonfigCLIENT_IDENTIFIER    "DCAmDzgFFhoKKy8kCBw3NQA"
+//#define democonfigCLIENT_IDENTIFIER    "testClient"__TIME__
 #endif
 
 #ifndef democonfigMQTT_BROKER_PORT
@@ -86,7 +85,7 @@
  */
 //#define mqttexampleTOPIC                             democonfigCLIENT_IDENTIFIER "/example/topic"
 
-#define mqttexampleTOPIC									"channels/1955513/publish"
+#define mqttexampleTOPIC										"channels/1955513/publish"
 /**
  * @brief The number of topic filters to subscribe.
  */

@@ -64,7 +64,7 @@ main-build: HACKATHON.axf
 HACKATHON.axf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU C++ Linker'
-	arm-none-eabi-c++ -nostdlib -L"C:\FINALversion\lpc_board_nxp_lpcxpresso_1549\Debug" -L"C:\FINALversion\lpc_chip_15xx\Debug" -L"C:\FINALversion\FreeRTOS\Debug" -Xlinker -Map="HACKATHON.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "HACKATHON_Debug.ld" -o "HACKATHON.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-c++ -nostdlib -L"C:\FINALVERISONTEST\lpc_board_nxp_lpcxpresso_1549\Debug" -L"C:\FINALVERISONTEST\lpc_chip_15xx\Debug" -L"C:\FINALVERISONTEST\FreeRTOS\Debug" -Xlinker -Map="HACKATHON.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "HACKATHON_Debug.ld" -o "HACKATHON.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

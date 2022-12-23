@@ -1,4 +1,4 @@
-16:31:21 **** Incremental Build of configuration Debug for project FreeRTOS ****
+14:35:11 **** Incremental Build of configuration Debug for project FreeRTOS ****
 make -r -j12 all 
 make[1]: Nothing to be done for 'main-build'.
 Performing post-build steps
@@ -16,5 +16,5 @@ arm-none-eabi-size "libFreeRTOS.a" ; # arm-none-eabi-objdump -h -S "libFreeRTOS.
    1687	      0	     60	   1747	    6d3	timers.o (ex libFreeRTOS.a)
  
 
-16:31:21 Build Finished. 0 errors, 0 warnings. (took 298ms)
+14:35:12 Build Finished. 0 errors, 0 warnings. (took 263ms)
 

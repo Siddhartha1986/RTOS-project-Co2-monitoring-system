@@ -1,4 +1,4 @@
-16:31:21 **** Incremental Build of configuration Debug for project lpc_chip_15xx ****
+14:35:12 **** Incremental Build of configuration Debug for project lpc_chip_15xx ****
 make -r -j12 all 
 make[1]: Nothing to be done for 'main-build'.
 Performing post-build steps
@@ -35,5 +35,5 @@ arm-none-eabi-size "liblpc_chip_15xx.a" ; # arm-none-eabi-objdump -h -S "liblpc_
     114	      0	      0	    114	     72	wwdt_15xx.o (ex liblpc_chip_15xx.a)
  
 
-16:31:22 Build Finished. 0 errors, 0 warnings. (took 300ms)
+14:35:12 Build Finished. 0 errors, 0 warnings. (took 261ms)
 

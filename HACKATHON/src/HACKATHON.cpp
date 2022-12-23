@@ -1,7 +1,7 @@
 /*
  ===============================================================================
  Name        : main.c
- Author      : $(author)
+ Author      : Siddhartha/ Subash/ Sulav /Anatoly:
  Version     :
  Copyright   : $(copyright)
  Description : main definition
@@ -30,16 +30,30 @@
 #include <ctype.h>
 #include "eeprom.h"
 #include "board.h"
-#include "./mqtt_demo/MQTT.h"
-#include "./mqtt_demo/using_plaintext.h"
+#include "mqtt_demo/MQTT.h"
 
-extern "C" {
 
-void vConfigureTimerForRunTimeStats(void) {
-	Chip_SCT_Init(LPC_SCTSMALL1);
-	LPC_SCTSMALL1->CONFIG = SCT_CONFIG_32BIT_COUNTER;
-	LPC_SCTSMALL1->CTRL_U = SCT_CTRL_PRE_L(255) | SCT_CTRL_CLRCTR_L; // set prescaler to 256 (255 + 1), and start timer
-}
+extern "C"
+ {
+	uint32_t prvGetTimeMs(void);
+	PlaintextTransportStatus_t prvConnectToServerWithBackoffRetries( NetworkContext_t * pxNetworkContext );
+	void prvCreateMQTTConnectionWithBroker( MQTTContext_t * pxMQTTContext, NetworkContext_t * pxNetworkContext );
+	void prvMQTTSubscribeWithBackoffRetries( MQTTContext_t * pxMQTTContext );
+	void prvMQTTPublishToTopic( char *, MQTTContext_t * pxMQTTContext );
+	MQTTStatus_t MQTT_ProcessLoop( MQTTContext_t * pContext, uint32_t timeoutMs );
+
+ }
+
+
+extern "C"
+{
+
+	void vConfigureTimerForRunTimeStats(void)
+	{
+		Chip_SCT_Init(LPC_SCTSMALL1);
+		LPC_SCTSMALL1->CONFIG = SCT_CONFIG_32BIT_COUNTER;
+		LPC_SCTSMALL1->CTRL_U = SCT_CTRL_PRE_L(255) | SCT_CTRL_CLRCTR_L; // set prescaler to 256 (255 + 1), and start timer
+	}
 
 }
 
@@ -47,7 +61,8 @@ std::string co2;
 int co2level = 0;
 int co2value = 0, temperaturevalue = 0, humidityvalue = 0, Valvevalue=0;
 
-void read_co2_level(void) {
+void read_co2_level(void)
+{
 	// turn on EEPROM
 	Chip_Clock_EnablePeriphClock(SYSCTL_CLOCK_EEPROM);
     Chip_SYSCTL_PeriphReset(RESET_EEPROM);
@@ -58,26 +73,89 @@ void read_co2_level(void) {
 
 	int i = 0;
 
-	if(buffer[i]=='-'){
+	if(buffer[i]=='-')
+	{
 		co2 += buffer[i];
 		i++;
 	}
 
-	while(isdigit(buffer[i])) {
+	while(isdigit(buffer[i]))
+	{
 		co2 += buffer[i];
 		i++;
 	}
 }
 
-void write_co2_level(void) {
-    uint8_t buffer[100];
-	for(int i = 0; i < co2.length(); i++) {
-		buffer[i] = co2[i];
+void write_co2_level(void)
+	{
+    	uint8_t buffer[100];
+    	for(int i = 0; i < co2.length(); i++)
+    	{
+    		buffer[i] = co2[i];
+    	}
+
+    	buffer[co2.length()] = 'x';
+    	Chip_EEPROM_Write(0x00000100, buffer, 100);
 	}
 
-	buffer[co2.length()] = 'x';
-	Chip_EEPROM_Write(0x00000100, buffer, 100);
+
+
+uint8_t ucSharedBuffer[ mqttexampleSHARED_BUFFER_SIZE ];
+uint32_t ulGlobalEntryTimeMs;
+uint16_t usSubscribePacketIdentifier;
+uint16_t usUnsubscribePacketIdentifier;
+
+static void prvMQTTTask( void * pvParameters )
+{
+    uint32_t ulPublishCount = 0U, ulTopicCount = 0U;
+    const uint32_t ulMaxPublishCount = 5UL;
+    NetworkContext_t xNetworkContext = { 0 };
+    PlaintextTransportParams_t xPlaintextTransportParams = { 0 };
+    MQTTContext_t xMQTTContext;
+    MQTTStatus_t xMQTTStatus;
+    PlaintextTransportStatus_t xNetworkStatus;
+
+    /* Remove compiler warnings about unused parameters. */
+    ( void ) pvParameters;
+
+    /* Set the pParams member of the network context with desired transport. */
+    xNetworkContext.pParams = &xPlaintextTransportParams;
+
+    ulGlobalEntryTimeMs = prvGetTimeMs();
+    char buff[60];
+
+    for( ; ; )
+    {
+        /****************************** Connect. ******************************/
+
+        /* Attempt to connect to the MQTT broker. If connection fails, retry after
+         * a timeout. The timeout value will exponentially increase until the
+         * maximum number of attempts are reached or the maximum timeout value is
+         * reached. The function below returns a failure status if the TCP connection
+         * cannot be established to the broker after the configured number of attempts. */
+        xNetworkStatus = prvConnectToServerWithBackoffRetries( &xNetworkContext );
+        configASSERT( xNetworkStatus == PLAINTEXT_TRANSPORT_SUCCESS );
+
+        /* Sends an MQTT Connect packet over the already connected TCP socket,
+         * and waits for a connection acknowledgment (CONNACK) packet. */
+        LogInfo( ( "Creating an MQTT connection to %s.", democonfigMQTT_BROKER_ENDPOINT ) );
+        prvCreateMQTTConnectionWithBroker( &xMQTTContext, &xNetworkContext );
+
+
+        /******************* Publish and Keep Alive Loop. *********************/
+
+        /* Publish messages with QoS0, then send and process Keep Alive messages. */
+        for( ;; )
+        {
+
+        	sprintf(buff, "field1=%d&field2=%d&field3=%d&field4=%d&field5=%d", co2value, humidityvalue, temperaturevalue, Valvevalue, co2level);
+        	prvMQTTPublishToTopic( buff, &xMQTTContext );
+        	vTaskDelay(2000);
+        }
+    }
 }
+
+
 
 
 
@@ -102,11 +180,9 @@ void lcd_task(void *pvParameters)
 	bool lasta = siga.read();
 
 
-
-
-
 	while(true)
 	{
+
 		std::string co2string = std::to_string(co2value),
 		temperaturestring = std::to_string(temperaturevalue),
 		humiditystring = std::to_string(humidityvalue),
@@ -123,50 +199,52 @@ void lcd_task(void *pvParameters)
 
 		  if(set_co2)
 			{
-				bool a = siga.read();
-				//bool b = sigb.read();
+				  bool a = siga.read();
+				  bool b = sigb.read();
 
-				//DEBUGOUT("value of A signal%d",a);
-				//DEBUGOUT("value of B Signal%d",b);
-				//vTaskDelay(10);
 
-				if(lasta==true && a==false)
+				if(lasta == true && a == false)
 				{
-						if(sigb.read() == false)
+						if(b == false)
 					{
-						co2level++;
+						co2level += 10;
 						DEBUGSTR("RIGHT\r\n");
 					}
 
-						else if(sigb.read() == true)
+						else if(b == true)
 						{
-							co2level--;
+							co2level -= 10;
 							DEBUGSTR("LEFT\r\n");
 						}
 
 				}
-			lasta=a;
+				lasta=a;
 			}
 
 
 
-		if(button.read()) {
+		if(button.read())
+		{
 			DEBUGSTR("Click\r\n");
 			vTaskDelay(400);
-			if(set_co2) {
+			if(set_co2)
+			{
 				co2 = std::to_string(co2level);
 				write_co2_level();   // writing the value to EEPROM
 				set_co2 = false;
-			} else {
-				set_co2 = true;
-			  }
+			}
+				else
+				  {
+					set_co2 = true;
+				  }
 		}
 
 		vTaskDelay(60);
 	}
 }
 
-void sensor_task(void *pvParameters) {
+void sensor_task(void *pvParameters)
+{
 	ModbusMaster humiditytemperature(241);
 	humiditytemperature.begin(9600);
 	ModbusRegister humidity(&humiditytemperature, 256, true);
@@ -180,12 +258,14 @@ void sensor_task(void *pvParameters) {
 	ModbusRegister co2status(&co2sensor, 0x800, true);
 	ModbusRegister humiditytemperaturestatus(&humiditytemperature, 0x200, true);
 
-	DigitalIoPin Valve(0, 27, DigitalIoPin::pullup);
+	DigitalIoPin Valve(0, 27, DigitalIoPin::output);
 
+	int offset = 10;
 	while(true){
 
 
-	if(humiditytemperaturestatus.read()) {
+	if(humiditytemperaturestatus.read())
+	{
 		vTaskDelay(10);
 		temperaturevalue = temperature.read() / 10;
 		vTaskDelay(10);
@@ -194,57 +274,67 @@ void sensor_task(void *pvParameters) {
 
 
 	vTaskDelay(10);
-	if(co2status.read() == 0) {
+	if(co2status.read() == 0)
+		{
 			vTaskDelay(10);
 			co2value = co2val.read() * 10;
 		}
 
-				int offset = 10;
-				if(co2level < (co2value-offset))
+				if (co2value <= 0)
 				{
-					Valve.write(false);
-					DEBUGSTR("VALVE IS CLOSED\r\n");
+				    Valve.write(false);
+					Valvevalue = false;
 				}
-
-				else if(co2level > (co2value+offset))
+				else if(co2level > (co2value + offset))
 				{
 					Valve.write(true);
-					DEBUGSTR("VALVE IS OPEN\r\n");
-				}
+					Valvevalue = true;
 
-				Valvevalue=Valve.read();
-				vTaskDelay(500);
+			    }
+				else
+				{
+					Valve.write(false);
+					Valvevalue = false;
+
+			    }
+
+
+					vTaskDelay(500);
+
 
 	}
 }
 
-extern "C" {
-	extern void vStartSimpleMQTTDemo();
-}
 
-int main(void) {
 
-#if defined (__USE_LPCOPEN)
-	// Read clock settings and update SystemCoreClock variable
-	SystemCoreClockUpdate();
-#if !defined(NO_BOARD_LIB)
-	// Set up and initialize all required blocks and
-	// functions related to the board hardware
-	Board_Init();
-	// Set the LED to the state of "On"
-	Board_LED_Set(0, true);
-#endif
-#endif
+int main(void)
+{
+
+	#if defined (__USE_LPCOPEN)
+		// Read clock settings and update SystemCoreClock variable
+		SystemCoreClockUpdate();
+	#if !defined(NO_BOARD_LIB)
+		// Set up and initialize all required blocks and
+		// functions related to the board hardware
+		Board_Init();
+		// Set the LED to the state of "On"
+		Board_LED_Set(0, true);
+	#endif
+	#endif
 	heap_monitor_setup();
 
 	read_co2_level();
+
+	xTaskCreate( prvMQTTTask,"MQTT-TASK",
+	configMINIMAL_STACK_SIZE+1024,NULL,tskIDLE_PRIORITY +1UL,NULL );
 
 	xTaskCreate(sensor_task, "sensor_task",
 	configMINIMAL_STACK_SIZE * 8, NULL, (tskIDLE_PRIORITY + 1UL), (TaskHandle_t*) NULL);
 
 	xTaskCreate(lcd_task, "lcd_task",
 	configMINIMAL_STACK_SIZE * 8, NULL, (tskIDLE_PRIORITY + 1UL), (TaskHandle_t*) NULL);
-	vStartSimpleMQTTDemo();
+
+
 	vTaskStartScheduler();
 
 	/* Should never arrive here */
