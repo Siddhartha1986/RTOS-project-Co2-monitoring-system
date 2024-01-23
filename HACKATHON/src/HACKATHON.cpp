@@ -32,7 +32,7 @@
 #include "board.h"
 #include "mqtt_demo/MQTT.h"
 
-
+// Define extern C functions for MQTT
 extern "C"
  {
 	uint32_t prvGetTimeMs(void);
@@ -44,7 +44,7 @@ extern "C"
 
  }
 
-
+// Define external C function for runtime stats
 extern "C"
 {
 
@@ -57,17 +57,19 @@ extern "C"
 
 }
 
+// Global variables
 std::string co2;
 int co2level = 0;
 int co2value = 0, temperaturevalue = 0, humidityvalue = 0, Valvevalue=0;
 
+// Function to read CO2 level from EEPROM
 void read_co2_level(void)
 {
-	// turn on EEPROM
+	// Turn on EEPROM
 	Chip_Clock_EnablePeriphClock(SYSCTL_CLOCK_EEPROM);
     Chip_SYSCTL_PeriphReset(RESET_EEPROM);
 
-	// read the EEPROM
+	// Read the EEPROM
     uint8_t buffer[100];
     Chip_EEPROM_Read(0x00000100, buffer, 100);
 
@@ -86,6 +88,7 @@ void read_co2_level(void)
 	}
 }
 
+// Function to write CO2 level to EEPROM
 void write_co2_level(void)
 	{
     	uint8_t buffer[100];
@@ -99,12 +102,14 @@ void write_co2_level(void)
 	}
 
 
-
+// Define shared buffer and other global variables
 uint8_t ucSharedBuffer[ mqttexampleSHARED_BUFFER_SIZE ];
 uint32_t ulGlobalEntryTimeMs;
 uint16_t usSubscribePacketIdentifier;
 uint16_t usUnsubscribePacketIdentifier;
 
+
+// MQTT Task function
 static void prvMQTTTask( void * pvParameters )
 {
     uint32_t ulPublishCount = 0U, ulTopicCount = 0U;
@@ -158,7 +163,7 @@ static void prvMQTTTask( void * pvParameters )
 
 
 
-
+// LCD Task function
 void lcd_task(void *pvParameters)
 {
 	// create lcd
@@ -243,6 +248,7 @@ void lcd_task(void *pvParameters)
 	}
 }
 
+// Sensor Task function
 void sensor_task(void *pvParameters)
 {
 	ModbusMaster humiditytemperature(241);
@@ -324,6 +330,8 @@ int main(void)
 	heap_monitor_setup();
 
 	read_co2_level();
+
+	// Creating three separate tasks for MQTT_task, sensor_task, lcd_task
 
 	xTaskCreate( prvMQTTTask,"MQTT-TASK",
 	configMINIMAL_STACK_SIZE+1024,NULL,tskIDLE_PRIORITY +1UL,NULL );
