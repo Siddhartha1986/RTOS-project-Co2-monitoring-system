@@ -42,4 +42,4 @@ Special thanks to Vaisala Oy for their support and collaboration in this project
 ## License
 This project is licensed under the terms of the MIT license.
 
-For further detailed explanation of the Project refer [Documentaion](https://github.com/Siddhartha1986/RTOS-project-Co2-monitoring-system/blob/master/Documentation.pdf)
+For detailed explanation of the Project refer [Documentaion](https://github.com/Siddhartha1986/RTOS-project-Co2-monitoring-system/blob/master/Documentation.pdf)
