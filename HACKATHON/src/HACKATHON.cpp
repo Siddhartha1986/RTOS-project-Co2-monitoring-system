@@ -1,7 +1,7 @@
 /*
  ===============================================================================
  Name        : main.c
- Author      : Siddhartha/ Subash/ Sulav /Anatoly:
+ Author      : Siddhartha
  Version     :
  Copyright   : $(copyright)
  Description : main definition
